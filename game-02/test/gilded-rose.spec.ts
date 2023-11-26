@@ -1,6 +1,5 @@
 import { expect } from 'chai';
 import { GildedRose } from '../app/gilded-rose';
-import { Item } from '../app/components/Item';
 
 describe('Gilded Rose', function () {
 
@@ -9,7 +8,7 @@ describe('Gilded Rose', function () {
         context('normal Items', function () {
 
             it('updates normal items before sell date', function () {
-                const gildedRose = new GildedRose([new Item('normal', 5, 10)]); // quality, sell in X day ])s
+                const gildedRose = new GildedRose([GildedRose.createItem('normal', 5, 10)]); // quality, sell in X day ])s
 
                 const $item = gildedRose.updateQuality()[0];
 
@@ -18,7 +17,7 @@ describe('Gilded Rose', function () {
             });
 
             it('updates normal items on the sell date', function () {
-                const gildedRose = new GildedRose([new Item('normal', 0, 10)]);
+                const gildedRose = new GildedRose([GildedRose.createItem('normal', 0, 10)]);
 
                 const $item = gildedRose.updateQuality()[0];
 
@@ -27,7 +26,7 @@ describe('Gilded Rose', function () {
             });
 
             it('updates normal items after the sell date', function () {
-                const gildedRose = new GildedRose([new Item('normal', -5, 10)]);
+                const gildedRose = new GildedRose([GildedRose.createItem('normal', -5, 10)]);
 
                 const $item = gildedRose.updateQuality()[0];
 
@@ -36,7 +35,7 @@ describe('Gilded Rose', function () {
             });
 
             it('updates normal items with a quality of 0', function () {
-                const gildedRose = new GildedRose([new Item('normal', 5, 0)]);
+                const gildedRose = new GildedRose([GildedRose.createItem('normal', 5, 0)]);
 
                 const $item = gildedRose.updateQuality()[0];
 
